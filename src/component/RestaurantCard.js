@@ -1,4 +1,3 @@
-import resList from "../utils/Mockdata";
 import { FOOD_LOGO } from "../utils/constants";
 
 const RestronCard =(props)=>{
