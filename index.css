@@ -14,6 +14,7 @@
 }
 .body{
     background-color: orangered;
+    
 }
 .search> input{
     margin-top: 50px;
@@ -22,16 +23,13 @@
 }
 
 .res-btn{
-    margin-top: 20px;
-    margin-left: 70%;
+  
     width: auto;
     background-color:skyblue;
     border-radius: 15px;
-    padding: 5px;
+    padding: 2px 4px;
     cursor: pointer;
     border: none;
-    padding-right: 10px;
-
 }
 
 .res-btn:hover{
@@ -105,9 +103,6 @@ h5{
 }
 
 
-.search{
-    padding: 10px; ;
-}
 
 
 .res-logo{
@@ -141,11 +136,16 @@ h5{
 }
 
 .search-btn{
-    margin-top: 20px;
+    padding: 2px 4px;
     border-radius: 15px;
+    cursor: pointer;
+    
 }
 
-.search{
-    margin-top: 20px;
-    border-radius: 15px;
+
+.filter{
+    display: flex;
+   padding-top: 50px; 
+    justify-content: center;
+    gap:10px;
 }
