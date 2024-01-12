@@ -5,8 +5,8 @@
     background-color: white;
 }
 .login-btn{
-    border-radius: 15px;
-    padding: 0px 5px;
+  
+    padding: 4px 2px;
     cursor: pointer;
     border: none;
     margin-right: 30px;
@@ -59,7 +59,7 @@
 }
 
 .nev-Item> ul> li{
-    padding: 10px;
+ 
     margin: 10px;
 }
 
@@ -148,4 +148,19 @@ h5{
    padding-top: 50px; 
     justify-content: center;
     gap:10px;
+}
+
+.errImage{
+    border-radius: 50px;
+}
+
+.err-c{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    gap: 20px;
+}
+
+.err-ct{
+    margin-top: 20px;
 }
