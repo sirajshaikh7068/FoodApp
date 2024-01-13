@@ -1,4 +1,5 @@
 import { FOOD_LOGO } from "../utils/constants";
+import { STAR_URL } from "../utils/constants";
 
 const RestronCard =(props)=>{
     const {resData}= props;
@@ -12,8 +13,8 @@ const RestronCard =(props)=>{
          ></img>
          <h3>{name}</h3>
          <h5>{locality}</h5>
-         <h5>{cuisines.slice(0,4).join(",")}</h5>
-         <h5>{avgRating}⭐</h5>
+         <h5>{cuisines.slice(0,3).join(",")}</h5>
+         <h5 className="cc2"><img src={STAR_URL}></img> {avgRating}</h5>
          <h5>{costForTwo}</h5>
         
        </div>

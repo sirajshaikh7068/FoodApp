@@ -80,7 +80,7 @@
 
 .res-card{
     width: 190px;
-    height: auto;
+    height: 250px;
     padding: 10px;
      margin: 10px; 
     border: none;
@@ -163,4 +163,37 @@ h5{
 
 .err-ct{
     margin-top: 20px;
+}
+
+.a{
+    text-decoration:none;
+    color: black;
+}
+
+.first-resMenu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 50px 150px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px 10px;
+        
+    
+}
+
+
+.cc{
+    color: green;
+    width: 5px;
+  padding-left: 20px;
+}
+
+.cc>img{
+    width: 15px;
+    height: 15px;
+}
+.cc2>img{
+    width: 15px;
+    height: 15px;
 }
