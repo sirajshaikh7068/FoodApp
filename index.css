@@ -13,8 +13,7 @@
     background-color: skyblue;
 }
 .body{
-    background-color: orangered;
-    
+    background-color:orangered;
 }
 .search> input{
     margin-top: 50px;
@@ -48,10 +47,6 @@
 
 }
 
-
-
-
-
 .nev-Item > ul {
     display: flex;
     font-size: 15px;
@@ -65,7 +60,7 @@
 
 
 .nev-Item> ul> li:hover{
-    color: orangered;
+    color: rgb(251, 126, 80);
     cursor: pointer;
     font-style: italic;
 }
@@ -80,11 +75,12 @@
 
 .res-card{
     width: 190px;
-    height: 250px;
+    height: 270px;
     padding: 10px;
      margin: 10px; 
     border: none;
     border-radius: 15px; 
+   background-color: white;
     
 }
 

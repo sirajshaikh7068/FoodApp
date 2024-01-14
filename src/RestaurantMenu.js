@@ -35,8 +35,8 @@ const fetchData= async () =>{
       
       console.log(resInfo?.cards[0]?.card?.card?.info)
     
-    // const {itemCards}=resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-    // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+     const {itemCards}=resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+   
 
     // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card);
   return (
@@ -57,7 +57,7 @@ const fetchData= async () =>{
       </div>
      
         
-        {/* <ul>
+         <ul>
           <li>
             {
               itemCards.map((items)=>
@@ -67,7 +67,7 @@ const fetchData= async () =>{
                 {(items.card.info.price/100) ||(items.card.info.defaultprice/100) }</li>)
             } 
           </li>
-        </ul> */}
+        </ul> 
        
         
     </div>
