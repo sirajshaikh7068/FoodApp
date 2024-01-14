@@ -7,6 +7,7 @@ import About from "./src/component/About";
 import Contact from "./src/component/Contact";
 import Error from "./src/component/Error";
 import RestaurantMenu from "./src/component/RestaurantMenu";
+import Shimmer from "./src/component/Shimmer";
 // import Grocery from "./src/component/Grocery";
 
 
@@ -15,7 +16,8 @@ const Grocery = lazy(()=>import ( "./src/component/Grocery"));
 
 const AppLayout = ()=>{
   return <div className="applayout">
-      <Header/>
+    <div className="z-50 sticky top-0"> <Header/>
+    </div>
       <Outlet/>
      </div>
   
@@ -41,7 +43,7 @@ const appRouter=createBrowserRouter([
     },
     {
       path:"/grocery",
-      element: <Suspense fallback="Loading......"><Grocery/></Suspense>
+      element: <Suspense fallback={<Shimmer/>}><Grocery/></Suspense>
         
     },
     {

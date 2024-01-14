@@ -48,24 +48,25 @@ const Body =() =>{
   
 
     return(
-      <div className="body">
-        <div className="filter">
+      <div className="body bg-cyan-400 ">
+        <div className="filter flex flex-wrap p-5 justify-center gap-2">
           
             <input 
               type="text"
-              className="search-box"
+              placeholder="Enter Restaurent or food"
+              className="search-box w-96 h-8 rounded-xl p-2 font-medium font-style: italic"
               value={searchtext}
               onChange={(e)=>{ setsearchtext(e.target.value);console.log(filterlist);filter1();}}
               />
 
 
-              <button className="search-btn"
+              <button className="search-btn bg-blue-500 px-2 rounded-lg"
                 onClick={() =>{setsearchtext(""); filter1()}}
             >All</button>
             
          
 
-        <button className="res-btn" onClick={()=>{
+        <button className="res-btn bg-green-400 rounded-lg px-2" onClick={()=>{
             const filterres=list.filter(
             (res)=>res.info.avgRating>4.4
           );
@@ -74,7 +75,7 @@ const Body =() =>{
         >⭐Top Rated</button>
        
        </div> 
-        <div className="res-container">
+        <div className="res-container flex flex-wrap justify-center gap-9 py-16" >
           {filterlist.map((restaurant) =>( <Link className="a" key={restaurant.info.id} to={"/restaurant/" +restaurant.info.id}><RestronCard  resData={restaurant} /></Link> ))}
        
         </div>
