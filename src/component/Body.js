@@ -2,6 +2,8 @@ import RestronCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 
 const Body =() =>{
 
@@ -9,8 +11,6 @@ const Body =() =>{
   const [filterlist,setfilterList]= useState([]);
   const [searchtext,setsearchtext]=useState("");
 
-  
-  
   useEffect(()=>{
       fetchData();
   },[]);
@@ -28,6 +28,10 @@ const Body =() =>{
   
   };
 
+  const onlineStatus=useOnlineStatus();
+
+  if (onlineStatus=== false){return (<h1>Plz cheak Internet connection</h1>)}
+
   if(list.length === 0){
     return <Shimmer/>;
   }
@@ -41,6 +45,7 @@ const Body =() =>{
 
   };
 
+  
 
     return(
       <div className="body">

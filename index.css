@@ -54,16 +54,12 @@
 }
 
 .nev-Item> ul> li{
- 
+    cursor: pointer;
     margin: 10px;
 }
 
 
-.nev-Item> ul> li:hover{
-    color: rgb(251, 126, 80);
-    cursor: pointer;
-    font-style: italic;
-}
+
 
 
 .res-container{
