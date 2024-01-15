@@ -6,7 +6,7 @@ const RestronCard =(props)=>{
    
    const {name,locality,cloudinaryImageId,cuisines,avgRating,sla} = resData?.info;
    return (
-       < div className="res-card w-52 h-72 p-5 rounded-lg hover:scale-105 bg-gray-200 shadow-2xl " >
+       < div className="res-card w-52 h-72 p-5 rounded-lg hover:scale-105 bg-slate-400 shadow-2xl dark:bg-slate-200 dark:shadow-2xl " >
          <img className="res-logo h-32 w-44 rounded-lg   "
           src={FOOD_LOGO+
          cloudinaryImageId}
@@ -24,5 +24,19 @@ const RestronCard =(props)=>{
        </div>
    )
  };
+
+
+ export const withIsOpenLabel=()=>{
+    return (props)=>{
+      return(
+        <div>
+          <label className="absolute bg-white text-black mt-2   pl-2 pr-2 dark:bg-black  dark:text-white">Open</label>
+          <RestronCard {...props}/>
+        </div>
+      )
+    }
+
+ }
+
 
  export default RestronCard;

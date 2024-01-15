@@ -5,3 +5,5 @@ export const FOOD_LOGO="https://media-assets.swiggy.com/swiggy/image/upload/fl_l
 export const  MENU_API="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.4659813&lng=73.8246309&restaurantId="
 
 export const STAR_URL="https://tse4.mm.bing.net/th?id=OIP.sp61vPFhU1ld-0FikjfclgHaHa&pid=Api&P=0&h=180"
+
+export const ITEMIMAGE_URL="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/"

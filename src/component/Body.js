@@ -1,4 +1,4 @@
-import RestronCard from "./RestaurantCard";
+import RestronCard,{withIsOpenLabel} from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -10,6 +10,11 @@ const Body =() =>{
   const [list,setList]= useState([]);
   const [filterlist,setfilterList]= useState([]);
   const [searchtext,setsearchtext]=useState("");
+
+ 
+  
+  const RestaurantCardeithLabel=withIsOpenLabel(RestronCard);
+
 
   useEffect(()=>{
       fetchData();
@@ -38,7 +43,7 @@ const Body =() =>{
  
   const filter1=() => {
     let filt=list.filter((res) => {return res.info.name.toLowerCase().includes(searchtext.toLowerCase())
-      //  console.log(res.info.name)
+     
 
     });
     setfilterList(filt);
@@ -47,8 +52,10 @@ const Body =() =>{
 
   
 
+ 
+
     return(
-      <div className="body bg-cyan-400 ">
+      <div className="body  dark:bg-slate-900 shadow-2xl bg-slate-200 dark:shadow-2xl  ">
         <div className="filter flex flex-wrap p-5 justify-center gap-2">
           
             <input 
@@ -58,13 +65,9 @@ const Body =() =>{
               value={searchtext}
               onChange={(e)=>{ setsearchtext(e.target.value);console.log(filterlist);filter1();}}
               />
-
-
               <button className="search-btn bg-blue-500 px-2 rounded-lg"
                 onClick={() =>{setsearchtext(""); filter1()}}
-            >All</button>
-            
-         
+            >All</button> 
 
         <button className="res-btn bg-green-400 rounded-lg px-2" onClick={()=>{
             const filterres=list.filter(
@@ -74,9 +77,15 @@ const Body =() =>{
         }}
         >⭐Top Rated</button>
        
+
+       
        </div> 
         <div className="res-container flex flex-wrap justify-center gap-9 py-16" >
-          {filterlist.map((restaurant) =>( <Link className="a" key={restaurant.info.id} to={"/restaurant/" +restaurant.info.id}><RestronCard  resData={restaurant} /></Link> ))}
+          {filterlist.map((restaurant) =>( <Link className="a" key={restaurant.info.id} to={"/restaurant/" +restaurant.info.id}>
+            
+            {restaurant.info.isOpen ? <RestaurantCardeithLabel resData={restaurant}/> : <RestronCard  resData={restaurant} />}
+            
+           </Link> ))}
        
         </div>
        

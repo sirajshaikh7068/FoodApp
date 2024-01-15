@@ -2,6 +2,7 @@ import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import DarkMode from "./DarkMode";
 
 
 const Header = ()=>{
@@ -16,6 +17,8 @@ const Header = ()=>{
       
         <div className="nev-Item">
           <ul className="flex justify-between gap-3 hover:cursor-auto">
+
+          <DarkMode/>
             <li> Online Status:{onlineStatus ?"✅" :"🔴"}</li>
             <li>🔍Search</li>
             <li><Link to="/about">About</Link></li>
