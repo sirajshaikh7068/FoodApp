@@ -12,8 +12,8 @@ const DarkMode = () => {
    
   
     return (
-    <div>
-    <button className="p-1  justify-self-stretch rounded-lg "
+    <div className=''>
+    <button className="p-1    "
     onClick={()=>{
            toggleTheme();
            theme==="🌙" ? setTheme("🔆"):setTheme("🌙")

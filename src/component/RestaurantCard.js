@@ -3,10 +3,12 @@ import { STAR_URL } from "../utils/constants";
 
 const RestronCard =(props)=>{
     const {resData}= props;
+    //  console.log(resData);
    
-   const {name,locality,cloudinaryImageId,cuisines,avgRating,sla} = resData?.info;
+   const {name,locality,cloudinaryImageId,cuisines,avgRating,sla,costForTwo} = resData?.info;
    return (
-       < div className="res-card w-52 h-72 p-5 rounded-lg hover:scale-105 bg-slate-400 shadow-2xl dark:bg-slate-200 dark:shadow-2xl " >
+      
+         < div className="res-card w-56 h-80 p-5  hover:scale-105 bg-slate-100 shadow-2xl dark:bg-slate-200 dark:shadow-2xl " >
          <img className="res-logo h-32 w-44 rounded-lg   "
           src={FOOD_LOGO+
          cloudinaryImageId}
@@ -18,10 +20,10 @@ const RestronCard =(props)=>{
          </div>
          <h5 className="flex font-semibold">{locality}</h5>
          <h5>{cuisines.slice(0,2).join(",")}</h5>
-        
-        
-        
+         <h5>{costForTwo}</h5>
+
        </div>
+      
    )
  };
 
@@ -30,7 +32,7 @@ const RestronCard =(props)=>{
     return (props)=>{
       return(
         <div>
-          <label className="absolute bg-white text-black mt-2   pl-2 pr-2 dark:bg-black  dark:text-white">Open</label>
+          <label className=" bg-sky-700 text-black z-10  mt-2 absolute pl-2 pr-2 dark:bg-black  dark:text-white">Open</label>
           <RestronCard {...props}/>
         </div>
       )

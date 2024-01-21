@@ -14,6 +14,8 @@ const [showIndex,setshowIndex]=useState(null);
 
 const{ resID }= useParams();
 
+const dummy="Dummy Data";
+
 const resInfo = useRestaurantMenu(resID)
 
     if(resInfo ===null) return <Shimmer/>
@@ -31,11 +33,11 @@ const resInfo = useRestaurantMenu(resID)
 
   
   return (
-    <div className="parent-resMenu dark:bg-slate-900 shadow-2xl bg-slate-200 dark:shadow-2xl ">
+    <div className="parent-resMenu dark:bg-slate-900 shadow-2xl bg-slate-200 dark:shadow-2xl  ">
     
-      <div className="first-resMenu bg-gray-200 shadow-2xl w-10/12 mx-auto flex flex-wrap justify-center gap-96 my-10 border dark: bg-gray-150 ">
+      <div className="first-resMenu bg-gray-200 shadow-2xl w-8/12 mx-auto flex flex-wrap justify-center gap-96 pt-5  border dark: bg-gray-150 mb-10  ">
         
-        <diiv className="name-resmenu">
+        <diiv className="name-resmenu ">
             <h2 className='font-bold text-xl text-center'>{name}</h2>
             
           <h6 className='text-sm font-semibold' >{cuisines.join(",")}</h6>
@@ -50,24 +52,23 @@ const resInfo = useRestaurantMenu(resID)
       </div>
      <div>
        <p className='text-center'>
-       {
-          categories.map((category,index)=>(
-          <RestaurantCategory 
-          key={category?.card?.card?.info?.id}
-           data={category?.card?.card}
-           showItems={(index === showIndex &&true)}
-          
-            setshowIndex={()=>setshowIndex(index)}
-          />))
+     
+          {categories.map((category, index) => (
+            // Controlled Component
+            <RestaurantCategory
+              key={category?.card?.card.title}
+              data={category?.card?.card}
+              showItems={index === showIndex ? true : false}
+              setshowIndex={() => setshowIndex(index=== showIndex?null:index)}
+           
+              dummy={dummy}
+            />
+          ))}
          
-        };
+        
        </p>
 
-     </div>
-        
-     {/* showItems={(index === showIndex &&true) } */}
-       
-        
+     </div>    
     </div>
   )
 };

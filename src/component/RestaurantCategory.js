@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+
+import { useState } from 'react';
 import ItemCategory from './ItemCategory';
 
-const RestaurantCategory = ({data,showItems,setshowIndex,showIndex,index}) => {
+const RestaurantCategory = ({data,showItems,setshowitem,setshowIndex,dummy}) => {
+
+  const [showdata,setshaowdata]=useState(false)
 
   const handleClick=()=>{
-    showItems===false
-    &&  setshowIndex()
+    setshowIndex()
+    
+    
     }
 
   return (
@@ -14,8 +18,11 @@ const RestaurantCategory = ({data,showItems,setshowIndex,showIndex,index}) => {
         <span>{data.title} ({(data.itemCards.length)})</span>
         <span>🔽</span>
         </div>
-        <div>
-           { showItems && < ItemCategory items={data.itemCards}/>}
+        <div> 
+          
+           {showItems&& < ItemCategory items={data.itemCards} dummy={dummy} /> }
+
+          
         </div>
 
     </div>

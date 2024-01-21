@@ -7,26 +7,30 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body =() =>{
 
+
   const [list,setList]= useState([]);
+  // console.log(list);
   const [filterlist,setfilterList]= useState([]);
   const [searchtext,setsearchtext]=useState("");
+  console.log (list)
 
  
-  
   const RestaurantCardeithLabel=withIsOpenLabel(RestronCard);
 
 
-  useEffect(()=>{
+     useEffect(()=>{
       fetchData();
-  },[]);
+ `` },[]);
 
   const fetchData= async () =>{
-    const data= await fetch(
+  const data= await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.4659813&lng=73.8246309&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
   );  
     const json= await  data.json();
+    // console.log(json);
 
-   // {console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)}
+
+ // {console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)}
   
   setList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   setfilterList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -47,40 +51,66 @@ const Body =() =>{
 
     });
     setfilterList(filt);
+    
 
   };
 
-  
-
- 
 
     return(
-      <div className="body  dark:bg-slate-900 shadow-2xl bg-slate-200 dark:shadow-2xl  ">
+      <div className="body  dark:bg-slate-900 shadow-2xl  dark:shadow-2xl  ">
         <div className="filter flex flex-wrap p-5 justify-center gap-2">
           
-            <input 
-              type="text"
-              placeholder="Enter Restaurent or food"
-              className="search-box w-96 h-8 rounded-xl p-2 font-medium font-style: italic"
-              value={searchtext}
-              onChange={(e)=>{ setsearchtext(e.target.value);console.log(filterlist);filter1();}}
-              />
-              <button className="search-btn bg-blue-500 px-2 rounded-lg"
-                onClick={() =>{setsearchtext(""); filter1()}}
-            >All</button> 
+          <input 
+            type="text"
+            placeholder="Enter Restaurent or food"
+            className="search-box w-96 h-8 rounded-xl px-10  font-style: italic bg-slate-100"
+            value={searchtext}
+            onChange={(e)=>{ setsearchtext(e.target.value);filter1();}}
+            />
+            <button className="search-btn bg-blue-500 px-2 rounded-lg"
+              onClick={() =>{setsearchtext(""); filter1()}}
+          >All</button> 
+          </div> 
 
-        <button className="res-btn bg-green-400 rounded-lg px-2" onClick={()=>{
+        <div className="gap-4 px-16 pt-10 pb-0">
+        <button className="res-btn border border-black  rounded-lg px-2" onClick={()=>{
+            const fast_delivaryTime=list.filter(
+            (res)=>res.info.sla.deliveryTime<30
+
+          );
+          setfilterList(fast_delivaryTime);  
+         
+        
+        }}
+        >Fast Delivary</button>
+
+        <button className="res-btn border border-black rounded-lg px-2 gap-4" onClick={()=>{
             const filterres=list.filter(
-            (res)=>res.info.avgRating>4.4
+            (res)=>res.info.avgRating>4
           );
           setfilterList(filterres);          
         }}
         >⭐Top Rated</button>
+         <button className="res-btn border border-black rounded-lg px-2 gap-4" onClick={()=>{
+            const price=list.filter(
+            (res)=>{res.info.priceForTwo<"400 for two"}
+          );
+          setfilterList(price);          
+        }}
+        >100-200</button>
+         <button className="res-btn border border-black rounded-lg px-2 gap-4" onClick={()=>{
+            const NearMe=list.filter(
+            (res)=>{res.info.sla.lastMileTravel< 2}
+          );
+          setfilterList(NearMe);          
+        }}
+        >NearMe</button>
+        </div>
        
 
        
-       </div> 
-        <div className="res-container flex flex-wrap justify-center gap-9 py-16" >
+       
+        <div className="res-container flex flex-wrap justify-center gap-9 py-16 "  >
           {filterlist.map((restaurant) =>( <Link className="a" key={restaurant.info.id} to={"/restaurant/" +restaurant.info.id}>
             
             {restaurant.info.isOpen ? <RestaurantCardeithLabel resData={restaurant}/> : <RestronCard  resData={restaurant} />}

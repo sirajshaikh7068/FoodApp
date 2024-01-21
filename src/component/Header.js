@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import DarkMode from "./DarkMode";
+import {  useSelector } from "react-redux";
 
 
 const Header = ()=>{
@@ -10,32 +11,41 @@ const Header = ()=>{
     const[loginbtn,setloginbtn]=useState("Login");
     const onlineStatus = useOnlineStatus();
    
-    return (<div className = "header  flex items-center justify-between px-5 bg-white border h-20 ">
-      <div className="logo-container">
+
+   const cartItems = useSelector((store)=>store.cart.items);
+   console.log(cartItems)
+    
+   return (
+    <div className = "header  flex items-center  justify-between px-5 bg-slate-300 shadow-xl border h-20 ">
+      
+      <div className="logo-container flex gap-6">
           <Link to="/"><img className="logo w-24 hover:scale-105 " src={LOGO_URL} alt="logo" ></img></Link>
+          <span className="pt-4"> {onlineStatus ?"Online:✅" :"Offline:🔴"}</span>
       </div>
       
-        <div className="nev-Item">
-          <ul className="flex justify-between gap-3 hover:cursor-auto">
+      <div className="nev-Item flex justify-between gap-16 hover:cursor-auto pl-6">
+         
+          <span className="bg-yellow-100"><DarkMode/></span>
+          
+           
+           <span><Link to="/about">About</Link></span>
+           
+           <span><Link to="/cart">🛒 Cart-({cartItems.length}items)</Link></span>
+          
+     
+          
 
-          <DarkMode/>
-            <li> Online Status:{onlineStatus ?"✅" :"🔴"}</li>
-            <li>🔍Search</li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
-            <li>🛒 Cart</li>
-            <li><Link to="/grocery">Grocery</Link></li>
-            <button className="login-btn border bg-sky-400 p-1" 
+          <button className="login-btn border bg-sky-400 p-1" 
               onClick={()=>{
               loginbtn ==="Login"
               ? setloginbtn("Logout")
               : setloginbtn("Login")
-            }
-            }>
-              {loginbtn}
-            </button>
-            </ul>
+              }
+            }> {loginbtn}
+          </button>
+         
         </div>
+
       </div>
     )
   }
