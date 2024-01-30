@@ -1,126 +1,64 @@
-import RestronCard,{withIsOpenLabel} from "./RestaurantCard";
+import RestronCard, { withIsOpenLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import Crousel from "./Crousel";
+import FilterSearch from "./FilterSearch";
+import userestaurantlist from "../utils/userestaurantlist";
+import Filter from "./Filter";
 
+const Body = () => {
+  const [list, setList, filterlist, crouselCards, setfilterList] =
+    userestaurantlist();
 
-const Body =() =>{
+  const [searchtext, setsearchtext] = useState("");
 
+  const RestaurantCardeithLabel = withIsOpenLabel(RestronCard);
 
-  const [list,setList]= useState([]);
-  // console.log(list);
-  const [filterlist,setfilterList]= useState([]);
-  const [searchtext,setsearchtext]=useState("");
-  console.log (list)
+  const onlineStatus = useOnlineStatus();
 
- 
-  const RestaurantCardeithLabel=withIsOpenLabel(RestronCard);
-
-
-     useEffect(()=>{
-      fetchData();
- `` },[]);
-
-  const fetchData= async () =>{
-  const data= await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.4659813&lng=73.8246309&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-  );  
-    const json= await  data.json();
-    // console.log(json);
-
-
- // {console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)}
-  
-  setList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  setfilterList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  
-  };
-
-  const onlineStatus=useOnlineStatus();
-
-  if (onlineStatus=== false){return (<h1>Plz cheak Internet connection</h1>)}
-
-  if(list.length === 0){
-    return <Shimmer/>;
+  if (onlineStatus === false) {
+    return <h1>Plz cheak Internet connection</h1>;
   }
- 
-  const filter1=() => {
-    let filt=list.filter((res) => {return res.info.name.toLowerCase().includes(searchtext.toLowerCase())
-     
 
-    });
-    setfilterList(filt);
-    
+  if (list.length === 0) {
+    return <Shimmer />;
+  }
 
-  };
+  return (
+    <div className="body bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500 dark:bg-blend-darken dark:shadow-inner bg-slate-900  ">
+      <h1 className="text-black font-extrabold text-xl py-4 px-16 dark:text-white">
+        What's Your Plan Today ?
+      </h1>
+      <Crousel crouselCards={crouselCards} />
 
+      <FilterSearch
+        searchtext={searchtext}
+        setfilterList={setfilterList}
+        setsearchtext={setsearchtext}
+        list={list}
+      />
 
-    return(
-      <div className="body  dark:bg-slate-900 shadow-2xl  dark:shadow-2xl  ">
-        <div className="filter flex flex-wrap p-5 justify-center gap-2">
-          
-          <input 
-            type="text"
-            placeholder="Enter Restaurent or food"
-            className="search-box w-96 h-8 rounded-xl px-10  font-style: italic bg-slate-100"
-            value={searchtext}
-            onChange={(e)=>{ setsearchtext(e.target.value);filter1();}}
-            />
-            <button className="search-btn bg-blue-500 px-2 rounded-lg"
-              onClick={() =>{setsearchtext(""); filter1()}}
-          >All</button> 
-          </div> 
+      <Filter setfilterList={setfilterList} list={list} />
 
-        <div className="gap-4 px-16 pt-10 pb-0">
-        <button className="res-btn border border-black  rounded-lg px-2" onClick={()=>{
-            const fast_delivaryTime=list.filter(
-            (res)=>res.info.sla.deliveryTime<30
-
-          );
-          setfilterList(fast_delivaryTime);  
-         
-        
-        }}
-        >Fast Delivary</button>
-
-        <button className="res-btn border border-black rounded-lg px-2 gap-4" onClick={()=>{
-            const filterres=list.filter(
-            (res)=>res.info.avgRating>4
-          );
-          setfilterList(filterres);          
-        }}
-        >⭐Top Rated</button>
-         <button className="res-btn border border-black rounded-lg px-2 gap-4" onClick={()=>{
-            const price=list.filter(
-            (res)=>{res.info.priceForTwo<"400 for two"}
-          );
-          setfilterList(price);          
-        }}
-        >100-200</button>
-         <button className="res-btn border border-black rounded-lg px-2 gap-4" onClick={()=>{
-            const NearMe=list.filter(
-            (res)=>{res.info.sla.lastMileTravel< 2}
-          );
-          setfilterList(NearMe);          
-        }}
-        >NearMe</button>
-        </div>
-       
-
-       
-       
-        <div className="res-container flex flex-wrap justify-center gap-9 py-16 "  >
-          {filterlist.map((restaurant) =>( <Link className="a" key={restaurant.info.id} to={"/restaurant/" +restaurant.info.id}>
-            
-            {restaurant.info.isOpen ? <RestaurantCardeithLabel resData={restaurant}/> : <RestronCard  resData={restaurant} />}
-            
-           </Link> ))}
-       
-        </div>
-       
+      <div className="res-container flex flex-wrap justify-center gap-9 py-10">
+        {filterlist.map((restaurant) => (
+          <Link
+            className="a"
+            key={restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id}
+          >
+            {restaurant.info.isOpen ? (
+              <RestaurantCardeithLabel resData={restaurant} />
+            ) : (
+              <RestronCard resData={restaurant} />
+            )}
+          </Link>
+        ))}
       </div>
-    )
-  }
+    </div>
+  );
+};
 
-  export default Body;
+export default Body;
