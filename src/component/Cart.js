@@ -49,7 +49,7 @@ const Cart = () => {
                   Rs. {(item?.card?.info?.price / 100).toFixed(2)}{" "}
                 </p>
                 <p className="my-2 font-bold text-lg">
-                  Total price:{" "}
+                  Total price:
                   {(item.itemCount * item?.card?.info?.price) / 100}
                 </p>
               </div>

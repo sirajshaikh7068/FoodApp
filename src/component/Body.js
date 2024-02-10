@@ -7,6 +7,7 @@ import Crousel from "./Crousel";
 import FilterSearch from "./FilterSearch";
 import userestaurantlist from "../utils/userestaurantlist";
 import Filter from "./Filter";
+import RestaurantChain from "./RestaurantChain";
 
 const Body = () => {
   const [list, setList, filterlist, crouselCards, setfilterList] =
@@ -27,11 +28,16 @@ const Body = () => {
   }
 
   return (
-    <div className="body bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500 dark:bg-blend-darken dark:shadow-inner bg-slate-900  ">
+    <div className="body px-16 dark:bg-slate-500  ">
       <h1 className="text-black font-extrabold text-xl py-4 px-16 dark:text-white">
         What's Your Plan Today ?
       </h1>
       <Crousel crouselCards={crouselCards} />
+      <br />
+      <br />
+      <h1 className="text-black font-extrabold text-xl py-4 px-16 dark:text-white">
+        Top restaurant chains in Pune
+      </h1>
 
       <FilterSearch
         searchtext={searchtext}
