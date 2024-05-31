@@ -21,3 +21,6 @@ export const CROUSEL_IMAGE_CDN_URL =
 
 export const CROUSEL_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
+
+export const ADD_ITEM_URL =
+  "https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2018/07/Food.jpg?fit=1200%2C643&ssl=1";

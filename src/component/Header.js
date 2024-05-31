@@ -12,7 +12,7 @@ const Header = () => {
   const [loginbtn, setloginbtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
 
-  const cartItems = useSelector((store) => store.cart.items);
+  const cartTotalCount = useSelector((store) => store.cart.totalItemCount);
 
   const { userName } = useContext(UserContext);
 
@@ -46,7 +46,7 @@ const Header = () => {
             <FaCartShopping color="red" />
 
             <span className="absolute text-sm font-bold text-white bg-orange-600 px-1 right-1 top-[-1px] rounded-full">
-              {cartItems.length}
+              {cartTotalCount}
             </span>
           </li>
         </Link>

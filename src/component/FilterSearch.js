@@ -1,4 +1,5 @@
 import React from "react";
+import Filter from "./Filter";
 
 const FilterSearch = (props) => {
   const { searchtext, setfilterList, setsearchtext, list } = props;
@@ -9,7 +10,7 @@ const FilterSearch = (props) => {
         <input
           type="text"
           placeholder="Enter Restaurent or food"
-          className="search-box  h-8  w-6/12 px-4 text-black  border border-black"
+          className="search-box  h-8  w-6/12 px-4 text-black  rounded-lg border border-black"
           value={searchtext}
           onChange={(e) => {
             setsearchtext(e.target.value);
@@ -22,7 +23,7 @@ const FilterSearch = (props) => {
           }}
         />
         <button
-          className="search-btn bg-blue-500 px-2 rounded-lg"
+          className="search-btn bg-blue-500 font-bold text-black px-2 rounded-lg mr-25"
           onClick={() => {
             setsearchtext("");
             let filt = list.filter((res) => {
