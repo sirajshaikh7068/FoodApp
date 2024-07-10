@@ -28,27 +28,29 @@ const Body = () => {
   }
 
   return (
-    <div className="body px-16 dark:bg-slate-500  ">
-      <h1 className="text-black font-extrabold text-xl py-4 px-16 dark:text-white">
+    <div className="body px-16 dark:bg-slate-900 pt-16 pb-44 ">
+      <h1 className="text-black font-bold text-xl py-4 px-16 dark:text-white">
         What's Your Plan Today ?
       </h1>
       <Crousel crouselCards={crouselCards} />
       <br />
-      <br />
-      <h1 className="text-black font-extrabold text-xl py-4 px-16 dark:text-white">
+      <hr />
+
+      <RestaurantChain />
+      <div className="">
+        <FilterSearch
+          searchtext={searchtext}
+          setfilterList={setfilterList}
+          setsearchtext={setsearchtext}
+          list={list}
+        />
+      </div>
+      <h1 className="text-black font-bold text-xl py-2 px-16 dark:text-white">
         Top restaurant chains in Pune
       </h1>
-
-      <FilterSearch
-        searchtext={searchtext}
-        setfilterList={setfilterList}
-        setsearchtext={setsearchtext}
-        list={list}
-      />
-
       <Filter setfilterList={setfilterList} list={list} />
-
-      <div className="res-container flex flex-wrap justify-center gap-9 py-10">
+      <br />
+      <div className="res-container flex flex-wrap justify-center mt-6 gap-9 ">
         {filterlist.map((restaurant) => (
           <Link
             className="a"

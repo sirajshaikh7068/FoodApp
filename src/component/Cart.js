@@ -4,18 +4,21 @@ import { incrementItem, decrementItem, clearCart } from "../utils/cartSlice";
 
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ADD_ITEM_URL } from "../utils/constants";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
   return (
-    <section className="md:flex md:justify-center  w-4/5 mx-auto md:my-5 fmd:flex-wrap gap-5">
+    <section className="md:flex md:justify-center  w-4/5 mx-auto md:my-5 pb-44 fmd:flex-wrap gap-5">
       <div className="md:w-1/2 w-full">
         {cartItems.length < 1 ? (
-          <h1 className="text-center font-bold">
-            Your Cart Is Empty Plz Add items
-          </h1>
+          <div>
+            <h1 className="text-center font-bold">
+              Your Cart Is Empty Plz Add items
+            </h1>
+          </div>
         ) : (
           <div className="flex justify-between py-2 my-2 text-lg items-center ">
             <p className="">Your Cart</p> <hr className="" />
@@ -46,11 +49,14 @@ const Cart = () => {
                 <p className="font-bold">{item?.card?.info?.name}</p>
 
                 <p className="">
-                  Rs. {(item?.card?.info?.price / 100).toFixed(2)}{" "}
+                  Rs.
+                  {item?.card?.info?.defaultPrice / 100 ||
+                    item?.card?.info?.price / 100}
                 </p>
                 <p className="my-2 font-bold text-lg">
                   Total price:
-                  {(item.itemCount * item?.card?.info?.price) / 100}
+                  {(item.itemCount * item?.card?.info?.price ||
+                    item?.card?.info?.defaultPrice) / 100}
                 </p>
               </div>
               <div>

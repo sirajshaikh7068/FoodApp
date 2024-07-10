@@ -1,5 +1,6 @@
 export const LOGO_URL =
-  "https://tse2.mm.bing.net/th?id=OIP.TPGX2n5t4zj56NM58fUO2wHaEK&pid=Api&P=0&h=180";
+  // "https://tse2.mm.bing.net/th?id=OIP.TPGX2n5t4zj56NM58fUO2wHaEK&pid=Api&P=0&h=180";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEI6tEfMTxEOp1QsSeDKKcFaU5gVg3YPiCAA&s";
 
 export const FOOD_LOGO =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
@@ -21,3 +22,6 @@ export const CROUSEL_IMAGE_CDN_URL =
 
 export const CROUSEL_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
+
+export const ADD_ITEM_URL =
+  "https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2018/07/Food.jpg?fit=1200%2C643&ssl=1";

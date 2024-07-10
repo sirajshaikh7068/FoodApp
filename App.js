@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import appStore from "./src/utils/appStore";
 import Cart from "./src/component/Cart";
 import FilterSearch from "./src/component/FilterSearch";
+import Footer from "./src/component/Footer";
 // import Grocery from "./src/component/Grocery";
 
 const Grocery = lazy(() => import("./src/component/Grocery"));
@@ -23,6 +24,7 @@ const AppLayout = () => {
         <Header />
 
         <Outlet />
+        <Footer />
       </div>
     </Provider>
   );

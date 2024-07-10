@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import DarkMode from "./DarkMode";
 import { useSelector } from "react-redux";
-import { CARTICON_URL } from "../utils/constants";
+
 import UserContext from "../utils/UerContext";
+
 import { FaCartShopping } from "react-icons/fa6";
 
 const Header = () => {
@@ -21,18 +22,24 @@ const Header = () => {
       <div className="logo-container flex gap-6">
         <Link to="/">
           <img
-            className="logo w-24 hover:scale-105 "
+            className="logo w-24 hover:scale-105 m-2   shadow-yellow-500 shadow-lg rounded-xl"
             src={LOGO_URL}
             alt="logo"
           ></img>
         </Link>
-        <li className="pt-4 "> {userName}</li>
       </div>
 
       <div className="nev-Item flex justify-between gap-10 hover:cursor-auto mx-8 list-none ">
-        <li>
-          <Link to="/filtersearch">Search</Link>
+        {loginbtn == "Login" ? null : (
+          <li className="font-bold text-black">
+            <u>{userName}</u>
+          </li>
+        )}
+
+        <li className="rounded-full bg-black px-1 py-1  ">
+          <DarkMode />
         </li>
+
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -52,17 +59,13 @@ const Header = () => {
         </Link>
 
         <button
-          className="login-btn border bg-sky-400 p-1"
+          className="login-btn border bg-sky-400 p-1 rounded-lg"
           onClick={() => {
             loginbtn === "Login" ? setloginbtn("Logout") : setloginbtn("Login");
           }}
         >
           {loginbtn}
         </button>
-
-        <li className="rounded-full bg-black px-1 py-1  ">
-          <DarkMode />
-        </li>
       </div>
     </div>
   );
