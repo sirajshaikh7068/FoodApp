@@ -1,16 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-<<<<<<< HEAD
-
-import { incrementItem, decrementItem, clearCart } from "../utils/cartSlice";
-
-import { FaArrowRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { ADD_ITEM_URL } from "../utils/constants";
-=======
 import { Link, useLocation } from "react-router-dom";
 import { ADD_ITEM_URL } from "../utils/constants";
 import { addItem, decreamentItem, clearCart } from "../utils/cartSlice";
->>>>>>> 619e2c9d4daca29319026a4a0a8cfefe230d24ec
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -45,29 +36,6 @@ const Cart = () => {
   const url = useLocation();
 
   return (
-<<<<<<< HEAD
-    <section className="md:flex md:justify-center  w-4/5 mx-auto md:my-5 pb-44 fmd:flex-wrap gap-5">
-      <div className="md:w-1/2 w-full">
-        {cartItems.length < 1 ? (
-          <div>
-            <h1 className="text-center font-bold">
-              Your Cart Is Empty Plz Add items
-            </h1>
-          </div>
-        ) : (
-          <div className="flex justify-between py-2 my-2 text-lg items-center ">
-            <p className="">Your Cart</p> <hr className="" />
-            <button
-              disabled={cartItems.length > 0 ? false : true}
-              className="text-normal bg-red-500 text-white px-2 py-1"
-              onClick={() => dispatch(clearCart())}
-            >
-              Clear cart
-            </button>
-          </div>
-        )}
-        <hr className="my-2 border-gray-200 border-2" />
-=======
     <div
       className={` ${
         0 && !cartItems.length && "hidden"
@@ -86,7 +54,6 @@ const Cart = () => {
         </div>
       </div>
       <div className="border-b-2">
->>>>>>> 619e2c9d4daca29319026a4a0a8cfefe230d24ec
         {cartItems.map((item) => {
           console.log(item);
           console.log(item?.card?.info?.price);
@@ -101,31 +68,9 @@ const Cart = () => {
                 alt=""
                 onError={(event) => (event.target.style.display = "block")}
               />
-<<<<<<< HEAD
-              <div className="md:w-1/3 text-md ">
-                <p className="font-bold">{item?.card?.info?.name}</p>
-
-                <p className="">
-                  Rs.
-                  {item?.card?.info?.defaultPrice / 100 ||
-                    item?.card?.info?.price / 100}
-                </p>
-                <p className="my-2 font-bold text-lg">
-                  Total price:
-                  {(item.itemCount * item?.card?.info?.price ||
-                    item?.card?.info?.defaultPrice) / 100}
-                </p>
-              </div>
-              <div>
-                <button
-                  className="bg-gray-900 text-white px-2"
-                  onClick={() => dispatch(decrementItem(item))}
-                >
-=======
               <div className="w-24 ">{item?.card?.info?.name}</div>
               <div className="flex justify-between font-poppins w-20 h-7 border bg-slate-50 text-black py-[2px] px-2">
                 <button onClick={() => handleDecreamentFoodItem(item)}>
->>>>>>> 619e2c9d4daca29319026a4a0a8cfefe230d24ec
                   -
                 </button>
                 <span>{getItemCount(item)}</span>

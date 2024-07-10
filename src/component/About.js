@@ -34,14 +34,12 @@ const About = () => {
         experience from browsing to checkout.
       </p>
       <p className=" font-semibold">
-        <h3 className="text-xl  font-semibold">3. Real-Time Tracking:</h3> Stay
+        <p className="text-xl  font-semibold">3. Real-Time Tracking:</p> Stay
         updated with real-time tracking of your order, from preparation to
         delivery, so you know exactly when to expect your meal.
       </p>
       <p className=" font-semibold">
-        <h3 className="text-xl  font-semibold">
-          4. Fast and Reliable Delivery:
-        </h3>{" "}
+        <p className="text-xl  font-semibold">4. Fast and Reliable Delivery:</p>{" "}
         Leveraging the robust Swiggy API, we provide fast and reliable delivery
         services, ensuring that your food arrives fresh and hot.
       </p>
@@ -55,22 +53,22 @@ const About = () => {
       <p className=" font-semibold">
         <p className=" font-semibold">
           {" "}
-          <h3 className="text-xl  font-semibold">* ReactJS:</h3> For building a
+          <p className="text-xl  font-semibold">* ReactJS:</p> For building a
           dynamic and responsive user interface that enhances your browsing and
           ordering experience.
         </p>
         <p className=" font-semibold">
-          <h3 className="text-xl font-semibold"> * Redux:</h3> To manage the
-          state of our application efficiently, ensuring smooth performance and
+          <p className="text-xl font-semibold"> * Redux:</p> To manage the state
+          of our application efficiently, ensuring smooth performance and
           real-time updates.
         </p>
         <p className=" font-semibold">
-          <h3 className="text-xl  font-semibold">* Tailwind CSS:</h3> To create
-          a visually appealing and modern design that is both functional and
+          <p className="text-xl  font-semibold">* Tailwind CSS:</p> To create a
+          visually appealing and modern design that is both functional and
           aesthetically pleasing.
         </p>
         <p className=" font-semibold">
-          <h3 className="text-xl  font-semibold">* Swiggy API:</h3> To integrate
+          <p className="text-xl  font-semibold">* Swiggy API:</p> To integrate
           reliable and comprehensive food delivery services, bringing you the
           best selection of restaurants and cuisines.
         </p>

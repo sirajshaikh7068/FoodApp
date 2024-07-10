@@ -32,11 +32,7 @@ const Footer = () => {
       </div>
       <div className="container  flex flex-row  justify-between p-10 m-10">
         <div className="flex-1">
-<<<<<<< HEAD
           <h3 className="text-2xl font-bold mb-4">Bhukkad</h3>
-=======
-          <h3 className="text-2xl font-bold mb-4">Swiggy</h3>
->>>>>>> 619e2c9d4daca29319026a4a0a8cfefe230d24ec
           <p className="text-sm mb-2">About Us</p>
           <p className="text-sm mb-2">Team</p>
           <p className="text-sm mb-2">Careers</p>
